@@ -1,0 +1,157 @@
+Project Info for CfeIndiaBoot3 Application
+==================================================
+Assuming the Spring Boot Application 
+Tomcat port ==> 8090
+DB name     ==> cfeboot3
+
+DB script file is also in resource folder and same script below this file
+===================================================================
+Getting All Product 
+----------------------------------
+URL    ==> http://localhost:8090/product/allProduct
+Method ==> GET
+
+Getting Products by Pagination
+----------------------------------
+URL ==>  http://localhost:8090/product/2/3
+          http://localhost:8090/product/{startPoint}/{numberOfItems}
+
+Getting All Product by Name Sorting using Query
+----------------------------------
+URL ==> http://localhost:8090/product/allProduct/q/name
+
+
+Getting All Product by Price Sorting using Query 
+----------------------------------
+URL ==> http://localhost:8090/product/allProduct/q/price
+
+
+Getting All Product by Name Sorting using Comparator
+----------------------------------
+URL ==> http://localhost:8090/product/allProduct/c/name
+
+
+Getting All Product by Price Sorting using Comparator 
+----------------------------------
+URL ==> http://localhost:8090/product/allProduct/c/price
+
+
+Getting Product By Id
+----------------------------------
+URL    ==> http://localhost:8090/product/getProduct/3
+Method ==> POST
+
+
+Adding Product 
+----------------------------------
+URL ==> http://localhost:8090/product/addProduct
+Method ==> POST
+Header ==> ContentType  application/json
+
+Body ==>
+{
+    "productName": "HP8",
+    "productDescription": "Premium Spectra 8 ",
+    "price": 88939,
+    "category": {
+        "categoryId": 3,
+        "categoryName": "Laptop"
+    }
+}
+
+
+Updating Product
+--------------------
+URI    ==> http://localhost:8090/product/updateProduct/3
+Method ==> PUT
+Header ==> ContentType  application/json
+
+Body Data ===>
+{
+    "productName": "Nokia 1200",
+    "productDescription": "Feature Mobile 1200 with small camera",
+    "price": 7712,
+    "category": {
+        "categoryId": 1,
+        "categoryName": "Mobile"
+    }
+}
+
+
+Delete Product
+----------------------------------
+URL ==> http://localhost:8090/product/deleteProduct/6
+Method ==> DELETE
+===================================================================
+
+
+
+DB for CfeIndiaBoot3 Application
+=================================
+
+DROP TABLE IF EXISTS category;
+
+CREATE TABLE category (
+  categoryId int(11) NOT NULL AUTO_INCREMENT,
+  categoryName varchar(255) DEFAULT NULL,
+  PRIMARY KEY (categoryId)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+
+insert  into category(categoryId,categoryName) values 
+(1,'Mobile'),
+(2,'TV'),
+(3,'Laptop');
+
+CREATE TABLE hibernate_sequence (
+  next_val bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+insert  into hibernate_sequence(next_val) values 
+(1),
+(1);
+
+DROP TABLE IF EXISTS product;
+
+CREATE TABLE product (
+  pkIdProduct int(11) NOT NULL AUTO_INCREMENT,
+  price int(11) DEFAULT NULL,
+  productDesc varchar(255) DEFAULT NULL,
+  productName varchar(255) DEFAULT NULL,
+  categoryId int(11) DEFAULT NULL,
+  PRIMARY KEY (pkIdProduct),
+  KEY FK42iy97xlo64j31dslbn36vmyh (categoryId),
+  CONSTRAINT FK42iy97xlo64j31dslbn36vmyh FOREIGN KEY (categoryId) REFERENCES category (categoryId)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+insert  into product(pkIdProduct,price,productDesc,productName,categoryId) values 
+(2,2580,'Feature Mobile with small screen','Nokia 3315',1),
+(3,7712,'Feature Mobile 1200 with small camera','Nokia 1500',1),
+(4,14500,'Big Screen smart phone','Lenovo K6',1),
+(5,345553,'4K LED television with bright view','Sony V5',2),
+(6,82000,'Full HD screen with bazel less display','Dell 7610',3),
+(7,23000,'Cheap laptop ','Acer',3),
+(10,59999,'Premium Spectra 2 ','HP',3),
+(11,59999,'Premium Spectra 3 ','HP2',3),
+(12,59999,'Premium Spectra 4 ','HP4',3),
+(13,88939,'Premium Spectra 5 ','HP5',3),
+(14,88939,'Premium Spectra 6 ','HP6',3),
+(17,9000,'Premium Spectra 9 ','HP9',3),
+(18,19000,'Premium Spectra 10 ','HP10',3);
+
+
+DROP TABLE IF EXISTS user;
+
+CREATE TABLE user (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  username varchar(100) NOT NULL,
+  password varchar(100) NOT NULL,
+  salary int(10) DEFAULT NULL,
+  age int(10) DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+
+insert  into user(id,username,password,salary,age) values 
+(1,'niraj','$2a$10$m.YRi9p1.ymJa9YK6cCiie1OavguMCk7W/n14im0ReOYRqdt/TCVG',92234,38),
+(2,'raju','$2a$10$8IDzqz1cP2w947Y3QPpM7ONw3xKX7Gw2JJQ3HuKIjvsMOM/aGa1sG',4452,26);
