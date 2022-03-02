@@ -35,9 +35,18 @@ public class NewsController {
 		News n1 = new News(1, "Simaria Pul new construction", "general", "One rail and Road bridge is going to be constructed newr Mokama on the river of Ganga");
 		News n2 = new News(2, "NItish Kumar on Rajgir Wild Safari", "social", "Newly developed wild life safari in Rajgir is now open for public visit. Many animals like Lion, Black Buck, Cheetah are visible by very close distance");
 		News n3 = new News(3, "Russia attacks on Ukrain", "political", "Pussian president Putin has ordered a full scale invasion to neighbour country Ukrain. EU has condemned the move by Kremlin.");
+		News n4 = new News(4, "News Heading Political", "political", "News Brief 4 for better reading");
+		News n5 = new News(5, "News Heading Sport", "sports", "News Brief 5 for Sports news");
+		News n6 = new News(6, "News Heading Entertainment", "entertainment", "News Brief 6 Movie information will be covered here");
+		News n7 = new News(7, "News Heading General", "general", "General Event cover in Patna");
 		newsList.add(n1);		
 		newsList.add(n2);		
-		newsList.add(n3);		
+		newsList.add(n3);
+		newsList.add(n4);
+		newsList.add(n5);
+		newsList.add(n6);
+		newsList.add(n7);
+
         return new ResponseEntity<List<News>>(newsList , HttpStatus.OK);
 	}
 
