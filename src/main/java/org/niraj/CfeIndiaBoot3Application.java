@@ -7,8 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-//This is Starter Program. No need for @ComponentScan as this location will
-//autoscan all the subfolder of org.niraj
+//This is Starter Program. 
+//No need for @ComponentScan | auto scan all sub folder of org.niraj
 
 
 //@ComponentScan("org.niraj")
